@@ -1,0 +1,350 @@
+body{
+
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Arial;
+
+background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad0c4);
+
+overflow:hidden;
+
+}
+
+.container{
+
+text-align:center;
+z-index:2;
+
+}
+
+#letterText{
+white-space: pre-line;
+}
+#title{
+
+position:fixed;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+font-size:120px;
+
+font-weight:bold;
+
+color:white;
+
+opacity:0.25;
+
+z-index:0;
+
+pointer-events:none;
+
+white-space:nowrap;
+
+}
+
+/* ENVELOPE WRAPPER */
+
+.envelope-wrapper{
+cursor:pointer;
+position:relative;
+width:260px;
+height:160px;
+margin:auto;
+}
+
+/* ENVELOPE BODY */
+
+.envelope{
+position:absolute;
+width:100%;
+height:100%;
+
+background:#ff6f91;
+
+border-radius:10px;
+
+box-shadow:0 15px 30px rgba(0,0,0,0.2);
+
+z-index:2;
+}
+
+/* FLAP */
+
+.flap{
+position:absolute;
+
+width:100%;
+height:100%;
+
+background:#ff8fab;
+
+clip-path:polygon(0 0,100% 0,50% 60%);
+
+transform-origin:top;
+
+transition:0.6s;
+
+z-index:3;
+}
+
+/* LETTER */
+
+.letter{
+
+position:absolute;
+
+width:90%;
+left:5%;
+
+background:white;
+
+padding:20px;
+
+border-radius:10px;
+
+bottom:10px;
+
+transform:translateY(40px);
+
+transition:all 0.8s ease;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.25);
+
+z-index:1;
+
+opacity:0;
+
+transition: all 0.9s cubic-bezier(.17,.67,.48,1.35);
+
+}
+
+/* OPEN ANIMATION */
+
+.open .flap{
+transform:rotateX(180deg);
+}
+
+.open .letter{
+
+position:fixed;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:320px;
+max-width:85vw;
+
+opacity:1;
+
+z-index:999;
+
+}
+
+/* hint text */
+
+.hint{
+
+margin-top:15px;
+color:white;
+font-size:16px;
+
+}
+
+/* flowers */
+
+.flower{
+
+position:fixed;
+top:-10px;
+
+font-size:22px;
+
+animation:fall linear infinite;
+
+}
+
+@keyframes fall{
+
+to{
+
+transform:translateY(110vh);
+
+}
+
+}
+
+/* hearts */
+
+.heart{
+
+position:fixed;
+bottom:0;
+font-size:20px;
+
+animation:fly 2s linear forwards;
+
+}
+
+.bg-slider{
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+z-index:-2;
+
+overflow:hidden;
+
+}
+
+.film-vertical{
+
+position:fixed;
+bottom:0;
+left:0;
+
+width:100%;
+height:100%;
+
+overflow:hidden;
+
+z-index:-2;
+
+display:flex;
+justify-content:center;
+
+}
+
+.film-column{
+
+display:flex;
+flex-direction:column;
+
+gap:20px;
+
+animation:scrollVertical 18s linear infinite;
+
+}
+
+/* ảnh */
+
+.film-column img{
+
+width:160px;
+height:220px;
+
+object-fit:cover;
+
+border-radius:12px;
+
+box-shadow:0 8px 20px rgba(0,0,0,0.35);
+
+}
+
+/* animation chạy từ dưới lên */
+
+@keyframes scrollVertical{
+
+0%{
+transform:translateY(40%);
+}
+
+100%{
+transform:translateY(-60%);
+}
+
+}
+
+/* ảnh */
+
+.film-track img{
+
+width:180px;
+height:260px;
+
+object-fit:cover;
+
+border-radius:12px;
+
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
+
+}
+
+/* animation */
+
+@keyframes scrollFilm{
+
+0%{
+transform:translateY(0);
+}
+
+100%{
+transform:translateY(-50%);
+}
+
+}
+
+@keyframes slideShow{
+
+0%{opacity:0}
+10%{opacity:1}
+30%{opacity:1}
+40%{opacity:0}
+100%{opacity:0}
+
+}
+
+@keyframes fly{
+
+to{
+
+transform:translateY(-100vh);
+
+opacity:0;
+
+}
+
+}
+
+/* responsive */
+
+@media(max-width:600px){
+
+#title{
+
+font-size:34px;
+
+}
+
+.envelope{
+
+width:220px;
+
+}
+
+}
+@media(max-width:600px){
+
+.film-track img{
+
+width:130px;
+height:190px;
+
+}
+
+#title{
+font-size:70px;
+}
+
+}
